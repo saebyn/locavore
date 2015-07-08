@@ -6,7 +6,7 @@ function LambdaRESTAPI(locavore) {
 
 	var app = this.app = express();
 
-	app.use(bodyParser.json());
+	app.use(bodyParser.json({limit: '50mb'}));
 
 	app.post('/2014-11-13/functions/:fn/invoke-async/', function(req, res) { // InvokeAsync
 		locavore.invoke(req.params.fn, req.body, function(err, id) {
