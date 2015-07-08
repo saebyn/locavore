@@ -15,6 +15,13 @@ process.on('message', function(msg) {
 function run(task) {
 	var hd, t, finished, context = {
 		invokeid: task.id,
+		getRemainingTimeInMillis: function () {
+			var time = process.hrtime(t);
+			var ms = (time[0] * 1000) + (time[1] / 1000 / 1000);
+			var totalMs = task.maxRuntime * 1000;
+
+			return totalMs - ms;
+		},
 		done: function(err, result) {
 			if (finished) {
 				console.error('Task ' + task.id + ' called done() multiple times.\r\nerr =', err, '\r\nresult =', result, '\r\n', new Error().stack);

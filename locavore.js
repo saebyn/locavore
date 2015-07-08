@@ -133,12 +133,6 @@ Locavore.prototype.invoke = function(fn, data, acceptanceCb, completionCb) {
 				if (self.opts.verbosity >= 4) {
 					console.log(now(id), 'START', fn, ('on ' + proc.pid).gray);
 				}
-				proc.send({
-					path: meta.path,
-					fn: meta.lambdaFunction || 'handler',
-					data: data,
-					id: id
-				});
 
 				maxRuntime = Math.round(meta.timeout) || 3;
 				if (maxRuntime < 1) {
@@ -146,6 +140,14 @@ Locavore.prototype.invoke = function(fn, data, acceptanceCb, completionCb) {
 				} else if (maxRuntime > 60) {
 					maxRuntime = 60;
 				}
+
+				proc.send({
+					path: meta.path,
+					maxRuntime: maxRuntime,
+					fn: meta.lambdaFunction || 'handler',
+					data: data,
+					id: id
+				});
 
 				if (!self.debug) {
 					timeout = setTimeout(revoke, maxRuntime * 1000);
