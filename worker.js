@@ -67,7 +67,7 @@ function run(task) {
 	}
 	t = process.hrtime();
 	try {
-		require(task.path)[task.fn](task.data, context);
+		require(task.path)[task.fn](task.data, context, context.done);
 	} catch(ex) {
 		context.done(ex.toString() + '\r\n' + ex.stack);
 	}
