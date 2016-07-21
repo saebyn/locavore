@@ -25,7 +25,7 @@
     "console-title": "^1.0.1",
     "express": "^4.10.5",
     "generic-pool": "^2.2.0",
-    "memwatch": "^0.2.2",
+    "memwatch-next": "^0.3.0",
     "pretty-hrtime": "^0.2.2",
     "redis": "^0.12.1",
     "yargs": "^3.2.1"

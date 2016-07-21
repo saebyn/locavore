@@ -3,7 +3,7 @@ var prettyHrtime = require('pretty-hrtime'),
 
 process.argv.forEach(function(arg) {
 	if (arg == 'mem') {
-		memwatch = require('memwatch');
+		memwatch = require('memwatch-next');
 	}
 });
 
