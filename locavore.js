@@ -137,8 +137,6 @@ Locavore.prototype.invoke = function(fn, data, acceptanceCb, completionCb) {
 				maxRuntime = Math.round(meta.timeout) || 3;
 				if (maxRuntime < 1) {
 					maxRuntime = 1;
-				} else if (maxRuntime > 60) {
-					maxRuntime = 60;
 				}
 
 				proc.send({
