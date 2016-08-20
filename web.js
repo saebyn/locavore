@@ -23,7 +23,7 @@ function LambdaRESTAPI(locavore) {
 	app.post('/2015-03-31/functions/:fn/invocations', function(req, res) { // Invoke
 		locavore.invoke(req.params.fn, req.body, function(err, id) {
 			if ( err ) {
-				res.status(404)
+				res.status(404).send({})
 			} else {
 				res.header('x-amzn-requestid', id);
 			}
